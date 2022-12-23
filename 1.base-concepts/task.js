@@ -25,23 +25,25 @@ solveEquation();
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
 
   for ( let i = 0; i < arguments.length; i++) {
-    if (isNaN(Number(arguments[i]))) return false
+    if (isNaN(Number(arguments[i]))) {
+      return false;
+    } 
   }
 
   if (percent < 0 || percent > 100) {
     return false;
-  } else {
-    // расчет месячной процентной ставки
-    let monthlyInterestRate = percent/100/12;
-    // расчет суммы кредита
-    let creditAmount = amount - contribution;
-    // расчет ежемесячной выплаты
-    let monthlyPayment = creditAmount*(monthlyInterestRate+monthlyInterestRate/(Math.pow((1+monthlyInterestRate), countMonths)-1));
-    // расчет полной стоимости кредита
-    let totalLoanCost = +(monthlyPayment*countMonths).toFixed(2);
-
-    return totalLoanCost;
   }
+
+  // расчет месячной процентной ставки
+  let monthlyInterestRate = percent/100/12;
+  // расчет суммы кредита
+  let creditAmount = amount - contribution;
+  // расчет ежемесячной выплаты
+  let monthlyPayment = creditAmount*(monthlyInterestRate+monthlyInterestRate/(Math.pow((1+monthlyInterestRate), countMonths)-1));
+  // расчет полной стоимости кредита
+  let totalLoanCost = +(monthlyPayment*countMonths).toFixed(2);
+
+  return totalLoanCost;
 }
 
 calculateTotalMortgage();
