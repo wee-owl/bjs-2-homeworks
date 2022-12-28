@@ -14,7 +14,7 @@ function getArrayParams(...arr) {
 // task 2-2
 function summElementsWorker(...arr) {
 
-  if (!arguments.length) {
+  if (![...arr].length) {
     return 0;
   }
 
@@ -24,7 +24,7 @@ function summElementsWorker(...arr) {
 
 function differenceMaxMinWorker(...arr) {
 
-  if (!arguments.length) {
+  if (![...arr].length) {
     return 0;
   }
 
@@ -34,18 +34,18 @@ function differenceMaxMinWorker(...arr) {
 
 function differenceEvenOddWorker(...arr) {
 
-  if (!arguments.length) {
+  if (![...arr].length) {
     return 0;
   }
 
   let sumEvenElement = 0;
   let sumOddElement = 0;
 
-  for (let i = 0; i < arguments.length; i++) {
-    if (arguments[i] % 2 === 0) {
-      sumEvenElement += arguments[i];
+  for (let i = 0; i < [...arr].length; i++) {
+    if ([...arr][i] % 2 === 0) {
+      sumEvenElement += [...arr][i];
     } else {
-      sumOddElement += arguments[i];
+      sumOddElement += [...arr][i];
     }
   }
 
@@ -55,16 +55,16 @@ function differenceEvenOddWorker(...arr) {
 
 function averageEvenElementsWorker(...arr) {
 
-  if (!arguments.length) {
+  if (![...arr].length) {
     return 0;
   }
 
   let sumEvenElement = 0;
   let countEvenElement = 0;
 
-  for (let i = 0; i < arguments.length; i++) {
-    if (arguments[i] % 2 === 0) {
-      sumEvenElement += arguments[i];
+  for (let i = 0; i < [...arr].length; i++) {
+    if ([...arr][i] % 2 === 0) {
+      sumEvenElement += [...arr][i];
       countEvenElement += 1;
     }
   }
