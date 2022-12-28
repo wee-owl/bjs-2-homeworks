@@ -1,3 +1,5 @@
+"use strict"
+
 // task 2-1
 function getArrayParams(...arr) {
 
@@ -77,19 +79,7 @@ function makeWork(arr, func) {
   let maxArr = [];
 
   for (let i = 0; i < [...arr].length; i++) {
-    if (func === summElementsWorker) {
-      let maxSummElementsWorker = summElementsWorker(...arr[i]);
-      maxArr.push(maxSummElementsWorker);
-    } else if (func === differenceMaxMinWorker) {
-      let maxDifferenceMaxMinWorker = differenceMaxMinWorker(...arr[i]);
-      maxArr.push(maxDifferenceMaxMinWorker);
-    } else if (func === differenceEvenOddWorker) {
-      let maxDifferenceEvenOddWorker = differenceEvenOddWorker(...arr[i]);
-      maxArr.push(maxDifferenceEvenOddWorker);
-    } else {
-      let maxAverageEvenElementsWorker = averageEvenElementsWorker(...arr[i]);
-      maxArr.push(maxAverageEvenElementsWorker);
-    }
+    maxArr.push(func(...arr[i]));
   }
 
   return Math.max(...maxArr);
