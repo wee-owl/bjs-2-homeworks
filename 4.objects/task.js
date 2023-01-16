@@ -1,3 +1,5 @@
+"use strict"
+
 function Student(name, gender, age) {
   this.name = name;
   this.gender = gender;
@@ -14,7 +16,7 @@ Student.prototype.addMarks = function (...marks) {
 }
 
 Student.prototype.getAverage = function () {
-  return !this.marks || !this.marks.length ? 0 : this.marks.reduce((counter, value) => counter + value, 0)/this.marks.length;
+  return this.marks && this.marks.length ? this.marks.reduce((acc, cur) => acc + cur, 0)/this.marks.length : 0;
 }
 
 Student.prototype.exclude = function (reason) {
