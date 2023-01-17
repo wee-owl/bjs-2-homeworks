@@ -113,7 +113,7 @@ class Student {
       return
     }
 
-    keys = Object.keys(this.marks);
+    let keys = Object.keys(this.marks);
 
     if (keys.length === 0) {
       keys[0] = subject;
@@ -129,6 +129,8 @@ class Student {
   }
 
   getAverageBySubject(subject) {
+    let keys = Object.keys(this.marks);
+
     if (!keys.find(key => key === subject)) {
       return
     } else {
@@ -137,9 +139,9 @@ class Student {
   }
 
   getAverage() {
-    values = Object.values(this.marks);
-
+    let values = Object.values(this.marks);
     let valuesArr = [];
+
     values.forEach(value => {
       valuesArr.push(value.reduce((acc, item) => acc + item, 0)/value.length);
     });
