@@ -102,3 +102,48 @@ class Library {
 
 
 // task 4-3
+class Student {
+  constructor (name) {
+    this.name = name;
+    this.marks = {};
+  }
+
+  addMark(mark, subject) {
+    if (mark < 2 || mark > 5) {
+      return
+    }
+
+    keys = Object.keys(this.marks);
+
+    if (keys.length === 0) {
+      keys[0] = subject;
+      this.marks[keys[0]] = [];
+      this.marks[keys[0]].push(mark);
+    } else if (keys.find(key => key === subject)) {
+      this.marks[subject].push(mark);
+    } else {
+      keys.push(subject);
+      this.marks[subject] = [];
+      this.marks[subject].push(mark);
+    }
+  }
+
+  getAverageBySubject(subject) {
+    if (!keys.find(key => key === subject)) {
+      return
+    } else {
+      return this.marks[subject].reduce((acc, item) => acc + item, 0)/this.marks[subject].length;
+    }
+  }
+
+  getAverage() {
+    values = Object.values(this.marks);
+
+    let valuesArr = [];
+    values.forEach(value => {
+      valuesArr.push(value.reduce((acc, item) => acc + item, 0)/value.length);
+    });
+
+    return valuesArr.reduce((acc, item) => acc + item, 0)/valuesArr.length
+  }
+}
