@@ -9,7 +9,6 @@ function parseCount(value) {
 }
 
 function validateCount(value) {
-  parseCount(value);
   try {
     return parseCount(value);
   } catch (error) {
