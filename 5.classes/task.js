@@ -1,6 +1,6 @@
 "use strict"
 
-// task 4-1
+// task 5-1
 class PrintEditionItem {
   constructor(name, releaseDate, pagesCount) {
     this.name = name;
@@ -67,7 +67,7 @@ class DetectiveBook extends Book {
 }
 
 
-// task 4-2
+// task 5-2
 class Library {
   constructor(name) {
     this.name = name;
@@ -101,7 +101,7 @@ class Library {
 }
 
 
-// task 4-3
+// task 5-3
 class Student {
   constructor (name) {
     this.name = name;
