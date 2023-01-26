@@ -4,7 +4,7 @@
 class AlarmClock {
   constructor() {
     this.alarmCollection = [];
-    this.intervalId;
+    this.intervalId = null;
   }
 
 
@@ -24,7 +24,7 @@ class AlarmClock {
   removeClock(time) {
     let deleteTime = this.alarmCollection.filter((item) => item.time === time);
     if (deleteTime.length > 0) {
-      this.alarmCollection.splice(this.alarmCollection.indexOf(deleteTime), 1);
+      this.alarmCollection.splice(this.alarmCollection.indexOf(deleteTime[0]), 1);
     }
   }
 
@@ -38,16 +38,16 @@ class AlarmClock {
   start() {
     if (this.intervalId) {
       return
+    } else {
+      this.intervalId = setInterval(function() {
+        this.alarmCollection.forEach(item => {
+          if (item.time === this.getCurrentFormattedTime()) {
+            item.canCall = false;
+            item.callback();
+          }
+        })
+      }, 1000);
     }
-
-    this.intervalId = setInterval(function() {
-      this.alarmCollection.forEach(item => {
-        if (item.time === this.getCurrentFormattedTime()) {
-          item.callback();
-          item.canCall = false;
-        }
-      });
-    }, 1000);
   }
 
 
