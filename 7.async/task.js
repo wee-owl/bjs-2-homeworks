@@ -24,8 +24,11 @@ class AlarmClock {
   removeClock(time) {
     const deleteTime = this.alarmCollection.filter((item) => item.time === time);
     if (deleteTime.length > 0) {
-      return this.alarmCollection.splice(this.alarmCollection.indexOf(deleteTime[0]), 1);
+      for (let i = 0; i < deleteTime.length; i++) {
+        this.alarmCollection.splice(this.alarmCollection.indexOf(deleteTime[i]), 1);
+      }
     }
+    return this.alarmCollection;
   }
 
 
