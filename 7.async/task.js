@@ -22,9 +22,9 @@ class AlarmClock {
 
 
   removeClock(time) {
-    let deleteTime = this.alarmCollection.filter((item) => item.time === time);
+    const deleteTime = this.alarmCollection.filter((item) => item.time === time);
     if (deleteTime.length > 0) {
-      this.alarmCollection.splice(this.alarmCollection.indexOf(deleteTime[0]), 1);
+      return this.alarmCollection.splice(this.alarmCollection.indexOf(deleteTime[0]), 1);
     }
   }
 
@@ -45,7 +45,7 @@ class AlarmClock {
             item.canCall = false;
             item.callback();
           }
-        })
+        });
       }, 1000);
     }
   }
