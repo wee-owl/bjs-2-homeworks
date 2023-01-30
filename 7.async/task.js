@@ -22,18 +22,15 @@ class AlarmClock {
 
 
   removeClock(time) {
-    const deleteTime = this.alarmCollection.filter((item) => item.time === time);
-    if (deleteTime.length > 0) {
-      for (let i = 0; i < deleteTime.length; i++) {
-        this.alarmCollection.splice(this.alarmCollection.indexOf(deleteTime[i]), 1);
-      }
-    }
-    return this.alarmCollection;
+    this.alarmCollection = this.alarmCollection.filter((item) => item.time !== time);
   }
 
 
   getCurrentFormattedTime() {
-    const today = new Date();
+    const today = new Date().toLocaleTimeString('ru-RU',{
+      hour: '2-digit',
+      minute: '2-digit',
+    });
     return (`${today.getHours()}:${today.getMinutes()}`);
   }
 
@@ -41,16 +38,16 @@ class AlarmClock {
   start() {
     if (this.intervalId) {
       return
-    } else {
-      this.intervalId = setInterval(function() {
-        this.alarmCollection.forEach(item => {
-          if (item.time === this.getCurrentFormattedTime()) {
-            item.canCall = false;
-            item.callback();
-          }
-        });
-      }, 1000);
     }
+
+    this.intervalId = setInterval(() => {
+      this.alarmCollection.forEach(item => {
+        if (item.time === this.getCurrentFormattedTime()) {
+          item.canCall = false;
+          item.callback();
+        }
+      });
+    }, 1000);
   }
 
 
