@@ -26,7 +26,10 @@ function debounceDecoratorNew(func, delay) {
   wrapper.count = 0;
   wrapper.allCount = 0;
   function wrapper(...args) {
+    wrapper.allCount += 1;
+
     if (!timeoutId) {
+      wrapper.count += 1;
       timeoutId = setTimeout(() => func(...args), 0);
     }
     if (timeoutId) {
@@ -34,11 +37,11 @@ function debounceDecoratorNew(func, delay) {
     }
     timeoutId = setTimeout(() => {
       timeoutId = null;
+      wrapper.count += 1;
       func(...args);
     }, delay);
 
     wrapper.history.push(args);
-    // wrapper.count
     wrapper.allCount = wrapper.history.length;
   }
   wrapper.history = [];
